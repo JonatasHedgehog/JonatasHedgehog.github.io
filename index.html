@@ -1,0 +1,112 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Helvetica, sans-serif;
+      }
+      body {
+        background-color: #333;
+      }
+      .conversation-container {
+        width: 90%;
+        margin: 50px auto;
+        text-align: center;
+      }
+      form {
+        background-color: #d4af37;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      textarea[name="message"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 10px;
+        background-color: #d4af37;
+        color: #fff;
+      }
+      input[type="submit"] {
+        background-color: #d4af37;
+        color: #333;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .response {
+        background-color: #000;
+        color: #d4af37;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        width: 100%;
+        float: left;
+      }
+      .message {
+        background-color: #d4af37;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        width: 100%;
+        text-align: left;
+        float: right;
+      }
+      img {
+        width: 50%;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://i.imgur.com/SsL8ARN.png" alt="logo">
+    <div class="conversation-container">
+      <div id="conversation"></div>
+      <form>
+        <textarea name="message"></textarea>
+        <input type="submit" value="Enviar" onclick="submitMessage(event); return false;">
+      </form>
+    </div>
+    <script>
+      function submitMessage(event) {
+        event.preventDefault();
+        
+        const responses = [
+          "Sim",
+          "Não",
+          "Whatsapp",
+          "Talvez",
+          "Among Us",
+          "<a href='https://youtu.be/SQxkXxFAZ7w'>Bora Toma Uma</</a>"
+];
+              const message = document.querySelector("textarea[name='message']").value;
+    const conversation = document.getElementById("conversation");
+
+    const userMessageContainer = document.createElement("div");
+    userMessageContainer.classList.add("message");
+    userMessageContainer.style.backgroundColor = "#d4af37";
+    userMessageContainer.style.color = "#fff";
+    userMessageContainer.style.textAlign = "right";
+    userMessageContainer.innerHTML = message;
+    conversation.appendChild(userMessageContainer);
+
+    const responseMessage = responses[Math.floor(Math.random() * responses.length)];
+
+    const responseMessageContainer = document.createElement("div");
+    responseMessageContainer.classList.add("response");
+    responseMessageContainer.style.backgroundColor = "#000";
+    responseMessageContainer.style.color = "#d4af37";
+    responseMessageContainer.innerHTML = responseMessage;
+    conversation.appendChild(responseMessageContainer);
+
+    document.querySelector("textarea[name='message']").value = "";
+  }
+</script>
+
+</body></html>
